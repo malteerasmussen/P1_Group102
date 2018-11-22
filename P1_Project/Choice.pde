@@ -1,7 +1,25 @@
 class Choice{
-  String[] choicearray1 = new String[7]; //Et array med text til boksene
+  String[] choicearray1 = new String[8];{
+    choicearray1[1] = "BACK";
+    choicearray1[2] = "CHEST";
+    choicearray1[3] = "ABS";
+    choicearray1[4] = "BICEPS";
+    choicearray1[5] = "TRICEPS";
+    choicearray1[6] = "SHOULDERS";
+    choicearray1[7] = "LEGS";
+  }
+  String[] choicearray2 = new String[8];{
+    choicearray2[1] = "DEADLIFT";
+    choicearray2[2] = "FRONT \nSQUADS";
+    choicearray2[3] = "SINGLE \nARM ROW";
+    choicearray2[4] = "KETTLEBELL \nSWINGS";
+    choicearray2[5] = "PULLOVER";
+    choicearray2[6] = "WIDE ROW";
+    choicearray2[7] = "GOOD \nMORNINGS";
+  }
+  
   int diff = 5;
-  PImage imgchoice = loadImage("Images/bgTest.jpg");
+ // PImage imgchoice = loadImage("image.jpg");
   color colorchoice = #F70505;
   int txtc = 0;
   
@@ -18,28 +36,29 @@ class Choice{
   }
   
   void display(){
-  imageMode(CORNER);
-    image(imgchoice,0,0);
+    
+  //  background(imgchoice);
+   // image(imgchoice,0,0,400,600);
     float X;
     float Y;
-    for( int i = 1; i < 8; i ++){ // et for-loop som laver boksene + text
-      if(i < diff){ // diff er hvornår boksene skal skifte position
+    for( int i = 1; i < 8; i ++){
+      if(i < diff){
         X = 0;
         Y = 0;
       }
-      else{ //det her er så de skifter position
-      X = width-2*boxX;
+      else{
+      X = width - boxX*2;
       Y = boxY*4;
       }
-      color(255,0,0);
+      fill(255,0,0);
       rectMode(CENTER);
-      
       rect(boxX+X,boxY*i-Y,boxS*2,boxS);
       
-      //color(txtc);
+      fill(txtc);
       textSize(txtS);
-      text(/*choicearray1[i]*/"hej", boxX+X,boxY*i-Y);
-      //textMode(CENTER);
+      textAlign(CENTER);
+      text(choicearray2[i], boxX+X,boxY*i-Y);
+      
     }
   }
   
