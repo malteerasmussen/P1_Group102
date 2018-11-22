@@ -57,9 +57,23 @@ class Choice{
       fill(txtc);
       textSize(txtS);
       textAlign(CENTER);
+      if(currentSceneIndex == 1){
+      text(choicearray1[i], boxX+X,boxY*i-Y);
+      }
+      if(currentSceneIndex == 2){
       text(choicearray2[i], boxX+X,boxY*i-Y);
-      
+      }
     }
   }
-  
+  void button(){
+    float lowx = boxX+X-boxS;
+    float highx = boxX+X+boxS;
+    //println(lowx,highx);
+    float lowy = boxY+Y-boxS/2;
+    float highy = boxY+Y+boxS/2;
+    //println(lowy,highy);
+    if(mousePressed && mouseX < lowx && mouseX > highx && mouseY < lowy && mouseY > highy){
+      currentSceneIndex += 1;
+    }
+  }
 }
