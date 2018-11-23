@@ -80,33 +80,30 @@ class Slider {
       img.resize(width/4, 0);
       image(img, width/2, height/2);
     }
-    
+
     if (liftStart && mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - (liftImages.liftArray.length-1)*(sliderHeight/liftImages.liftArray.length) && mouseY > (sliderY)) {
-     completed = true;
-     }
-
-
-
-    for (int i=0; i<liftImages.liftArray.length; i++) {
-      if (liftStart) {
-        if (mouseX > sliderX && mouseX < (sliderX + sliderWidth) && mouseY < (sliderY+sliderHeight) - i*(sliderHeight/liftImages.liftArray.length) && mouseY > (sliderY+sliderHeight) - (i+1)*(sliderHeight/liftImages.liftArray.length)) {
-          img = loadImage(liftImages.liftArray[i]);
-          img.resize(width/4, 0);
-          image(img, width/2, height/2);
-        } else if (mouseX < sliderX && mouseY < (sliderY+sliderHeight) - i*(sliderHeight/liftImages.liftArray.length) && mouseY > (sliderY+sliderHeight) - (i+1)*(sliderHeight/liftImages.liftArray.length)) {
-          img = loadImage(liftImages.liftLeftArray[i]);
-          img.resize(width/4, 0);
-          image(img, width/2, height/2);
-          mistake = true;
-        } else if (mouseX > sliderX+sliderWidth && mouseY < (sliderY+sliderHeight) - i*(sliderHeight/liftImages.liftArray.length) && mouseY > (sliderY+sliderHeight) - (i+1)*(sliderHeight/liftImages.liftArray.length)) {
-          img = loadImage(liftImages.liftRightArray[i]);
-          img.resize(width/4, 0);
-          image(img, width/2, height/2);
-          mistake = true;
-        }
-      }
+      completed = true;
     }
 
+    float sy = map(mouseY, sliderY+sliderHeight, sliderY, 0, liftImages.liftArray.length);
+
+    if (liftStart) {
+      if (mouseX > sliderX && mouseX < (sliderX + sliderWidth)) {
+        img = loadImage(liftImages.liftArray[int(sy)]);
+        img.resize(width/4, 0);
+        image(img, width/2, height/2);
+      } else if (mouseX < sliderX) {
+        img = loadImage(liftImages.liftLeftArray[int(sy)]);
+        img.resize(width/4, 0);
+        image(img, width/2, height/2);
+        mistake = true;
+      } else if (mouseX > sliderX+sliderWidth) {
+        img = loadImage(liftImages.liftRightArray[int(sy)]);
+        img.resize(width/4, 0);
+        image(img, width/2, height/2);
+        mistake = true;
+      }
+    }
 
     println(completed);
   }
