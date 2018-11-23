@@ -5,8 +5,13 @@ class Scene1 extends Scenes {
 
 
 
+
   void display() {
-    background(255);
-    sceneOneSlider.displaySlider();
-  }
+   background(255);
+   sceneOneSlider.displaySlider();
+   
+   
+   }
+   
+
 }

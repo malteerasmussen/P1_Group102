@@ -87,4 +87,7 @@ class Choice{
     rectMode(CENTER);
     rect(width,height,width/2,height/2);
   }
+  
+  
+  
 }
