@@ -20,7 +20,7 @@ class Choice{
   
   int diff = 5;
  // PImage imgchoice = loadImage("image.jpg");
-  color colorchoice = #F70505;
+  color colorchoice = #3DC9F2;
   int txtc = 0;
   
   float boxX;
@@ -51,7 +51,8 @@ class Choice{
       X = width - boxX*2;
       Y = boxY*4;
       }
-      fill(255,0,0);
+      fill(colorchoice,100);
+      stroke(colorchoice,100);
       rectMode(CENTER);
       rect(boxX+X,boxY*i-Y,boxS*2,boxS,c);
       
