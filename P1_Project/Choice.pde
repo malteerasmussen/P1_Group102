@@ -22,18 +22,11 @@ class Choice{
  // PImage imgchoice = loadImage("image.jpg");
   color colorchoice = #3DC9F2;
   int txtc = 0;
-  
-  float boxX;
-  float boxY;
-  float boxS;
-  float txtS;
-  
-  Choice(float _boxX, float _boxY, float _boxS, float _txtS){
-  boxX = _boxX;
-  boxY = _boxY;
-  boxS = _boxS;
-  txtS = _txtS; 
-  }
+
+  float boxX = 100;
+  float boxY = 100;
+  float boxS = 45;
+  float txtS = 12;
   
   void display(){
     
@@ -63,7 +56,7 @@ class Choice{
       text(choicearray1[i], boxX+X,boxY*i-Y);
       }
       if(currentSceneIndex == 2){
-      text(choicearray2[i], boxX+X,boxY*i-Y);
+      text(choicearray2[i], boxX+X,boxY*i-Y-5);
       }
     }
   }
