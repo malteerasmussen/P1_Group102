@@ -1,4 +1,4 @@
-class Scene extends Scenes {
+class Scene7 extends Scenes {
 
 
   

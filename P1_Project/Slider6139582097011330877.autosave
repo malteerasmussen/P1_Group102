@@ -4,7 +4,7 @@ class Slider {
 
   PImage img;
   float sliderX = width/8;
-  float sliderY = height/8;
+  float sliderY = height/2;
   float sliderWidth = width/8;
   float sliderHeight = height/8*6;
 
@@ -13,11 +13,13 @@ class Slider {
   boolean completed = false;
 
   void displaySlider() {
-    rectMode(CORNER);
+    rectMode(CENTER);
     fill(0, 255, 0);
-    stroke(255, 0, 0);
-    strokeWeight(10);
+    //  stroke(255, 0, 0);
+    //  strokeWeight(10);
+    noStroke();
     rect(sliderX, sliderY, sliderWidth, sliderHeight);
+    
 
     imageMode(CENTER);
 
@@ -91,7 +93,6 @@ class Slider {
 
     if (liftStart) {
       if (mouseX > sliderX && mouseX < (sliderX + sliderWidth)) {
-        img = loadImage(liftImages.liftArray[int(sy)]);
         img.resize(width/4, 0);
         image(img, width/2, height/2);
       } else if (mouseX < sliderX) {
@@ -107,6 +108,6 @@ class Slider {
       }
     }
 
-   // println(completed);
+    // println(completed);
   }
 }
