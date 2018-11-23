@@ -13,6 +13,7 @@ class Slider {
   boolean completed = false;
 
   void displaySlider() {
+    rectMode(CORNER);
     fill(0, 255, 0);
     stroke(255, 0, 0);
     strokeWeight(10);
@@ -75,6 +76,7 @@ class Slider {
     if (!liftStart) {
       textSize(20);
       fill(0);
+      textAlign(CORNER);
       text("Slide fra bunden for at starte", 200, 200);
       img = loadImage("Images/man1.png");
       img.resize(width/4, 0);
@@ -105,6 +107,6 @@ class Slider {
       }
     }
 
-    println(completed);
+   // println(completed);
   }
 }
