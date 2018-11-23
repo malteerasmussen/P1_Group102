@@ -1,6 +1,6 @@
 class thirdScene extends Scenes  {
   
-    Choice scene2Choice = new Choice(100, 100, 35, 12);
+    Choice scene3Choice = new Choice(100, 100, 35, 12);
   
   /*void display(){
     background(#FF0808);
@@ -8,7 +8,7 @@ class thirdScene extends Scenes  {
   
   void display(){
     background(255);
-    scene2Choice.display();
-    scene2Choice.button();
+    scene3Choice.display();
+    scene3Choice.button();
   }
 }
