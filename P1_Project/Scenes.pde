@@ -1,12 +1,10 @@
- class Scenes {
+class Scenes {
+
   
-   String [] chooseScenes = new String []{
-      "firstScene",
-      "secondScene",
-      "thirdScene"
-   };
-   
-   void display(){
-   }
-   
+
+  Scenes() {
+
+  }
+  void display() {
+  }
 }
