@@ -1,4 +1,4 @@
-class firstScene extends Scenes {
+class Scene1 extends Scenes {
 
 
   Slider sceneOneSlider = new Slider();

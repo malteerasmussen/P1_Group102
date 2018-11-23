@@ -1,4 +1,4 @@
-class thirdScene extends Scenes  {
+class Scene3 extends Scenes  {
   
     Choice scene2Choice = new Choice(100, 100, 35, 12);
   

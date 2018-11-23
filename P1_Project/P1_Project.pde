@@ -4,9 +4,9 @@ int currentSceneIndex =0;
 void setup() {
   size(600, 800);
     chooseScenes = new Scenes []{
-      new firstScene(),
-      new secondScene(),
-      new thirdScene()
+      new Scene1(),
+      new Scene2(),
+      new Scene3()
     };
 
 }
