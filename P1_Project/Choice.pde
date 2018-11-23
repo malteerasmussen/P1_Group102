@@ -73,7 +73,19 @@ class Choice{
     float highy = boxY+Y+boxS/2;
     //println(lowy,highy);
     if(mousePressed && mouseX < lowx && mouseX > highx && mouseY < lowy && mouseY > highy){
-      currentSceneIndex += 1;
+      if(currentSceneIndex == 1){
+        currentSceneIndex += 1;
+      }
+      if (currentSceneIndex == 2){
+        infobox();
+        currentSceneIndex += 1;
+      }
     }
+  }
+  
+  void infobox(){
+    fill(0,255,0);
+    rectMode(CENTER);
+    rect(width,height,width/2,height/2);
   }
 }
