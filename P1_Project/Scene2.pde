@@ -7,4 +7,7 @@ class Scene2 extends Scenes{
     scene2Choice.display();
     scene2Choice.button();
   }
+  
+  
+  
 }

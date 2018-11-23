@@ -14,9 +14,9 @@ class Slider {
 
   void displaySlider() {
     rectMode(CORNER);
-    fill(0, 255, 0);
-    stroke(255, 0, 0);
     strokeWeight(10);
+    stroke(255, 0, 0);
+    fill(0, 255, 0);
     rect(sliderX, sliderY, sliderWidth, sliderHeight);
 
     imageMode(CENTER);
@@ -67,11 +67,25 @@ class Slider {
      }
      */
 
-    if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/liftImages.liftArray.length)) {
+    if (mousePressed && mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/liftImages.liftArray.length)) {
       liftStart = true;
+      if(completed && mistake){
+        currentSceneIndex=6;
+      }
+      if(completed && !mistake){
+        currentSceneIndex=5;
+      }
     } else if (mouseY < sliderY || mouseY > sliderY + sliderHeight) {
       liftStart = false;
+      completed = false;
+    } else if (!mousePressed){
+      liftStart = false;
+      completed = false;
+      mistake = false;
     }
+    
+println(mistake);
+
 
     if (!liftStart) {
       textSize(20);
@@ -87,9 +101,9 @@ class Slider {
       completed = true;
     }
 
-    float sy = map(mouseY, sliderY+sliderHeight, sliderY, 0, liftImages.liftArray.length);
+    float sy = map(mouseY, sliderY+sliderHeight, sliderY, 0, liftImages.liftArray.length-0.1);
 
-    if (liftStart) {
+    if (liftStart && mousePressed) {
       if (mouseX > sliderX && mouseX < (sliderX + sliderWidth)) {
         img = loadImage(liftImages.liftArray[int(sy)]);
         img.resize(width/4, 0);
@@ -106,7 +120,5 @@ class Slider {
         mistake = true;
       }
     }
-
-   // println(completed);
   }
 }
