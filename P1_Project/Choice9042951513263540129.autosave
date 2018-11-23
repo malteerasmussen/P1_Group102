@@ -9,8 +9,8 @@ class Choice{
     choicearray1[7] = "LEGS";
   }
   String[] choicearray2 = new String[8];{
-    choicearray2[1] = "FRONT \nSQUADS";
-    choicearray2[2] = "DEADLIFT";
+    choicearray2[1] = "DEADLIFT";
+    choicearray2[2] = "FRONT \nSQUADS";
     choicearray2[3] = "SINGLE \nARM ROW";
     choicearray2[4] = "KETTLEBELL \nSWINGS";
     choicearray2[5] = "PULLOVER";
@@ -66,27 +66,20 @@ class Choice{
     }
   }
   void button(){
-    float lowx = boxX-boxS;
-    float highx = boxX+boxS;
+    float lowx = boxX+X-boxS;
+    float highx = boxX+X+boxS;
     //println(lowx,highx);
-    float lowy = boxY-boxS/2;
-    float highy = boxY+boxS/2;
-    
-    float newlowy = (boxY-boxS/2)*2;
-    float newhighy = (boxY+boxS/2)*2;
-
+    float lowy = boxY+Y-boxS/2;
+    float highy = boxY+Y+boxS/2;
     //println(lowy,highy);
-    println("scene "+currentSceneIndex);
-    
-    if(currentSceneIndex == 1 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy){
+    if(mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy){
+      if(currentSceneIndex == 1){
         currentSceneIndex = 2;
-        println(1);
       }
-      if(currentSceneIndex == 2 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > newlowy && mouseY < newhighy){
-        currentSceneIndex = 0;
-        println(2);
+      if (currentSceneIndex == 2){
+        currentSceneIndex += 1;
       }
-
+    }
   }
   
   void infobox(){
