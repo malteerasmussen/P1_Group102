@@ -37,6 +37,7 @@ class Choice {
     float X;
     float Y;
     int c = 7;
+    int trans = 100;
     for ( int i = 1; i < 8; i ++) { //loop creating rectangles and text
       if (i < diff) { //diff states how many rectangles are on the left side and the rest on the right side
         X = 0;
@@ -45,19 +46,24 @@ class Choice {
         X = width - boxX*2;
         Y = boxY*4;
       }
-      fill(colorchoice, 100);
-      stroke(colorchoice, 100);
+      fill(colorchoice, trans);
+      stroke(colorchoice, trans);
       rectMode(CENTER);
       rect(boxX+X, boxY*i-Y, boxS*2, boxS, c);
 
-      fill(txtc);
+      if (currentSceneIndex == 3){
+        fill(txtc,trans);
+      }
+      else{
+        fill(txtc);
+      }
       textSize(txtS);
       textAlign(CENTER);
       if (currentSceneIndex == 1) { //if statement, which determant which array to use
         text(choicearray1[i], boxX+X, boxY*i-Y);
       }
       if (currentSceneIndex == 2 || currentSceneIndex == 3) {
-        text(choicearray2[i], boxX+X, boxY*i-Y-5);
+        text(choicearray2[i], boxX+X, boxY*i-Y-c/2);
       }
     }
   }
