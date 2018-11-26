@@ -7,7 +7,7 @@ class Scene3 extends Scenes  {
   }*/
   
   void display(){
-    background(255);
+
     scene3Choice.display();
     scene3Choice.button();
   }

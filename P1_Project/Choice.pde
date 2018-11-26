@@ -78,6 +78,8 @@ class Choice{
     //println(lowy,highy);
     println("scene "+currentSceneIndex);
     
+    
+    
     if(currentSceneIndex == 1 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy){
         currentSceneIndex = 2;
         println(1);
