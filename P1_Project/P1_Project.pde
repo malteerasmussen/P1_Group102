@@ -24,10 +24,8 @@ void draw() {
   myScenes.display();
   chooseScenes[currentSceneIndex].display();
 
-  if (millis()/100%300 == 0) {
-    currentSceneIndex = 0;
-  }
-  println(millis()/100);
+  timer=millis()/100;
+  timer();
 }
 
 
@@ -36,4 +34,14 @@ void keyPressed() {
   if (currentSceneIndex == chooseScenes.length) {
     currentSceneIndex = 0;
   }
+}
+
+void timer() {
+  if ((timer-timerReset)%600 == 0) {
+    currentSceneIndex = 0;
+  }
+}
+
+void mouseClicked() {
+  timerReset = timer - 1;
 }
