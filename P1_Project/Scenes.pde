@@ -10,4 +10,6 @@ class Scenes {
     image(bgImage,width/2,height/2);
     
   }
+  
+  
 }
