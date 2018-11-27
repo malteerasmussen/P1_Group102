@@ -63,7 +63,7 @@ class Scene6 extends Scenes {
     image(quit, quitX, quitY);
 
     if (mousePressed && dist(mouseX, mouseY, quitX, quitY) < quitSize/2) {
-      currentSceneIndex = 0;
+      currentSceneIndex = 1;
     }
   }
 }

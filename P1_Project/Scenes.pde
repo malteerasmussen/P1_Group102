@@ -14,7 +14,7 @@ class Scenes {
     int backX = backSize/2;
     int backY = (height-(backSize/2));
 
-    if (currentSceneIndex != 0 && currentSceneIndex != 5) {
+    if (currentSceneIndex != 0 && currentSceneIndex != 5 && currentSceneIndex != 3) {
       PImage back;
       imageMode(CENTER);
       back = loadImage("Images/back.png");
