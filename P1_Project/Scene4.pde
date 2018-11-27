@@ -96,13 +96,19 @@ float nox = boxlx+im*3;
   }
   
   void button(){
-    float lowx = yesx;
-    float highx = yesx+imgs;
+    float lowyx = yesx;
+    float highyx = yesx+imgs;
+    float lownx = nox;
+    float highnx = nox+imgs;
     float lowy = imgy;
     float highy = imgy+boxs;
-    if ( mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy) {
+    if ( mousePressed && mouseX > lowyx && mouseX < highyx && mouseY > lowy && mouseY < highy) {
       currentSceneIndex ++;
-      println(1);
+      println("+");
+    }
+    if ( mousePressed && mouseX > lownx && mouseX < highnx && mouseY > lowy && mouseY < highy) {
+      currentSceneIndex --;
+      println("-");
     }
   }
 }
