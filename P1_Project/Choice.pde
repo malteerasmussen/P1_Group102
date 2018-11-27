@@ -20,7 +20,7 @@ class Choice{
   
   int diff = 5;
  // PImage imgchoice = loadImage("image.jpg");
-  color colorchoice = #F70505;
+  color colorchoice = #3DC9F2;
   int txtc = 0;
   
   float boxX;
@@ -41,6 +41,7 @@ class Choice{
    // image(imgchoice,0,0,400,600);
     float X;
     float Y;
+    int c = 7;
     for( int i = 1; i < 8; i ++){
       if(i < diff){
         X = 0;
@@ -50,9 +51,10 @@ class Choice{
       X = width - boxX*2;
       Y = boxY*4;
       }
-      fill(255,0,0);
+      fill(colorchoice,100);
+      stroke(colorchoice,100);
       rectMode(CENTER);
-      rect(boxX+X,boxY*i-Y,boxS*2,boxS);
+      rect(boxX+X,boxY*i-Y,boxS*2,boxS,c);
       
       fill(txtc);
       textSize(txtS);
@@ -89,11 +91,5 @@ class Choice{
         println(2);
       }
 
-  }
-  
-  void infobox(){
-    fill(0,255,0);
-    rectMode(CENTER);
-    rect(width,height,width/2,height/2);
   }
 }
