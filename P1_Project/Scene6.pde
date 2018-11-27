@@ -7,10 +7,14 @@ class Scene6 extends Scenes {
   float boxWidth = width-100;
   float boxHeight = height/2;
   int boxOpacity = 150;
-  PImage img;
+  PImage retry;
   int retrySize = 70;
-  float retryX = boxX;
+  float retryX = boxX-boxWidth/5;
   float retryY = boxY+boxHeight/2-retrySize;
+  PImage quit;
+  int quitSize = 70;
+  float quitX = boxX+boxWidth/5;
+  float quitY = boxY+boxHeight/2-quitSize;
 
 
   void display() {
@@ -34,22 +38,32 @@ class Scene6 extends Scenes {
     textSize(25);
     rect(boxX, boxY, boxWidth, boxHeight);
     fill(0);
-    
-    if (!mistake){
-    text(reviewText.goodReview, boxX, boxY, boxWidth, boxHeight-50);
+
+    if (!mistake) {
+      text(reviewText.goodReview, boxX, boxY, boxWidth, boxHeight-50);
     }
-    if (mistake){
+    if (mistake) {
       text(reviewText.badReview, boxX, boxY, boxWidth, boxHeight-50);
     }
-    
-    img = loadImage("Images/retry.png");
+
+    // Retry Button
+    retry = loadImage("Images/retry.png");
     imageMode(CENTER);
-    img.resize(retrySize,retrySize);
-    image(img,retryX,retryY);
-    
-    if(mousePressed && dist(mouseX,mouseY,retryX,retryY) < retrySize/2){
+    retry.resize(retrySize, retrySize);
+    image(retry, retryX, retryY);
+
+    if (mousePressed && dist(mouseX, mouseY, retryX, retryY) < retrySize/2) {
       currentSceneIndex = 4;
-      println("Clicked");
+    }
+
+    // Quit button
+    quit = loadImage("Images/quit.png");
+    imageMode(CENTER);
+    quit.resize(quitSize, quitSize);
+    image(quit, quitX, quitY);
+
+    if (mousePressed && dist(mouseX, mouseY, quitX, quitY) < quitSize/2) {
+      currentSceneIndex = 0;
     }
   }
 }
