@@ -15,7 +15,6 @@ void setup() {
     new Scene4(), 
     new Scene5(), 
     new Scene6(), 
-    new Scene7()
   };
 }
 
