@@ -43,4 +43,8 @@ void timer() {
 
 void mouseClicked() {
   timerReset = timer - 1;
+  
+  if (currentSceneIndex != 0 && currentSceneIndex != 5 && dist(mouseX,mouseY,35,height-35) < 35){
+    --currentSceneIndex;
+  }
 }
