@@ -80,6 +80,7 @@ class Choice {
     //println(lowy,highy);
     println("scene "+currentSceneIndex);
 
+
     //Scene 2 button
     if (currentSceneIndex == 1 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy) {
       currentSceneIndex ++;

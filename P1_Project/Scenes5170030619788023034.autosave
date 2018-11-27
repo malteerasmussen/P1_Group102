@@ -9,7 +9,9 @@ class Scenes {
     bgImage.resize(0,height);
     image(bgImage,width/2,height/2);
     
+    PImage back;
+    back = loadImage("Images/back.png");
+    back.resize(50,50);
+    image(back,25,height-25);
   }
-  
-  
 }

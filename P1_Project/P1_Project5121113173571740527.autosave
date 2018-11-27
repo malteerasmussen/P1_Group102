@@ -15,6 +15,7 @@ void setup() {
     new Scene4(), 
     new Scene5(), 
     new Scene6(), 
+    new Scene7()
   };
 }
 
@@ -42,5 +43,9 @@ void timer() {
 }
 
 void mouseClicked() {
-  timerReset = timer - 1;
+ // timerReset = timer - 1;
+  
+  if (currentSceneIndex != 0 && dist(mouseX,mouseY,25,height-25) < 25){
+    --currentSceneIndex;
+  }
 }

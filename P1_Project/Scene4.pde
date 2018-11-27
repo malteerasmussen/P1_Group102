@@ -53,7 +53,7 @@ float nox = boxlx+im*3;
 
 
   void display() {
-    background(255);
+
     scene4Choice.display();
     
     fill(tc);
@@ -84,6 +84,7 @@ float nox = boxlx+im*3;
     fill(tc);
     textSize(txtsh);
     text(accepttext,txtl,accept);
+
     
     imageMode(CORNER);
     image(dl,dlx,dly,dls,boxs);
