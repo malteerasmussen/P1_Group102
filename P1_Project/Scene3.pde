@@ -10,7 +10,7 @@ class Scene3 extends Scenes  {
   
   void display(){
 
-    scene2Choice.display();
-    scene2Choice.button();
+    scene3Choice.display();
+    scene3Choice.button();
   }
 }

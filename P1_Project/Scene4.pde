@@ -54,7 +54,6 @@ float nox = boxlx+im*3;
 
   void display() {
 
-    background(255);
     scene4Choice.display();
     
     fill(tc);
