@@ -8,8 +8,11 @@ class Scenes {
     bgImage = loadImage("Images/gym.jpg");
     bgImage.resize(0, height);
     image(bgImage, width/2, height/2);
+    
+    backButton();
+  }
 
-
+  void backButton() {
     int backSize = 70;
     int backX = backSize/2;
     int backY = (height-(backSize/2));
