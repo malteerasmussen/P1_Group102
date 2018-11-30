@@ -20,7 +20,7 @@ class Choice {
     choicearray2[7] = "GOOD \nMORNINGS";
   }
 
-  int diff = 5;
+  int diff = 5; //Determent how many boxes are on each side
   // PImage imgchoice = loadImage("image.jpg");
   color colorchoice = #3DC9F2;
   int txtc = 0;
@@ -39,7 +39,7 @@ class Choice {
     int c = 7;
     int trans = 100;
     for ( int i = 1; i < 8; i ++) { //loop creating rectangles and text
-      if (i < diff) { //diff states how many rectangles are on the left side and the rest on the right side
+      if (i < diff) { 
         X = 0;
         Y = 0;
       } else { //moving the rest of the rectangles to the other side of the screen
@@ -51,7 +51,7 @@ class Choice {
       rectMode(CENTER);
       rect(boxX+X, boxY*i-Y, boxS*2, boxS, c);
 
-      if (currentSceneIndex == 3){
+      if (currentSceneIndex == 3){ //Makes the rectancles transparent in scene 4
         fill(txtc,trans);
       }
       else{
@@ -59,7 +59,7 @@ class Choice {
       }
       textSize(txtS);
       textAlign(CENTER);
-      if (currentSceneIndex == 1) { //if statement, which determant which array to use
+      if (currentSceneIndex == 1) { //if statements, which determant which array to use
         text(choicearray1[i], boxX+X, boxY*i-Y);
       }
       if (currentSceneIndex == 2 || currentSceneIndex == 3) {
