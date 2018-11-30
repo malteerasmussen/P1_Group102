@@ -2,6 +2,7 @@ class Review {
   
   Text reviewText = new Text();
   Slider mySlider = new Slider();
+  
   float boxX = width/2;
   float boxY = height/2;
   float boxWidth = width-100;
@@ -24,11 +25,11 @@ class Review {
 
     if (!mistake) {
       fill(0, 230, 0);
-      text("GOOD JOB!", width/2, height/8);
+      text("GOOD JOB!", width/2, height/7);
     }
     if (mistake) {
       fill(230, 0, 0);
-      text("Room for improvement", width/2, height/8);
+      text("Room for improvement", width/2, height/7);
     }
 
     rectMode(CENTER);
@@ -52,7 +53,7 @@ class Review {
     image(retry, retryX, retryY);
 
     if (mousePressed && dist(mouseX, mouseY, retryX, retryY) < retrySize/2) {
-      currentSceneIndex = 4;
+      --currentSceneIndex;
     }
 
     // Quit button

@@ -12,6 +12,6 @@ class Scene5 extends Scenes {
 
 
     mySlider.displaySlider(); 
-
+    backButton();
   }
 }

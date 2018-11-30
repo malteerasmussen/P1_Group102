@@ -1,71 +1,21 @@
 class Slider {
 
   Images liftImages = new Images();
+  Text liftText = new Text();
 
   PImage img;
-  float sliderX = width/8;
-  float sliderY = height/8;
+  PImage arrow;
+  float sliderX = width/9*7;
+  float sliderY = height/10;
   float sliderWidth = width/8;
-  float sliderHeight = height/8*6;
+  float sliderHeight = height/8*5;
 
   boolean liftStart= false;
 
   boolean completed = false;
 
   void displaySlider() {
-    rectMode(CORNER);
-    strokeWeight(10);
-    stroke(230, 0, 0);
-    fill(0, 230, 0);
-    rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
-
     imageMode(CENTER);
-
-    // Nedenstående kode med de 7 forskellige if-statements afgører hvornår hvert billede vises.
-    // Det er det samme for-loopet nedenunder gør - det fylder bare lidt mindre.
-
-    /*
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[0]);
-     image(img, width/2, width/2);
-     }
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - (sliderHeight/7) && mouseY > (sliderY+sliderHeight) - 2*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[1]);
-     image(img, width/2, width/2);
-     }
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - 2*(sliderHeight/7) && mouseY > (sliderY+sliderHeight) - 3*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[2]);
-     image(img, width/2, width/2);
-     }
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - 3*(sliderHeight/7) && mouseY > (sliderY+sliderHeight) - 4*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[3]);
-     image(img, width/2, width/2);
-     }
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - 4*(sliderHeight/7) && mouseY > (sliderY+sliderHeight) - 5*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[4]);
-     image(img, width/2, width/2);
-     }
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - 5*(sliderHeight/7) && mouseY > (sliderY+sliderHeight) - 6*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[5]);
-     image(img, width/2, width/2);
-     }
-     if (mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) - 6*(sliderHeight/7) && mouseY > (sliderY+sliderHeight) - 7*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[6]);
-     image(img, width/2, width/2);
-     }
-     
-     } */
-
-    /*
-        for (int i=0; i<liftImages.liftArray.length; i++) {
-     if (liftStart && mouseX > sliderX && mouseX < (sliderX + sliderWidth) && mouseY < (sliderY+sliderHeight) - i*(sliderHeight/7) && mouseY > (sliderY+sliderHeight) - (i+1)*(sliderHeight/7)) {
-     img = loadImage(liftImages.liftArray[i]);
-     img.resize(width/4, 0);
-     image(img, width/2, height/2);
-     
-     }
-     }
-     */
 
     if (mousePressed && mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/liftImages.liftArray.length)) {
       liftStart = true;
@@ -87,9 +37,9 @@ class Slider {
       textSize(20);
       fill(0);
       textAlign(CORNER);
-      text("Slide fra bunden for at starte", 200, 200);
-      img = loadImage("Images/man1.png");
-      img.resize(width/3, 0);
+      text(liftText.SliderText, width/6, height/8);
+      img = loadImage(liftImages.liftReady);
+      img.resize(width, 0);
       image(img, width/2, height/2);
       mistake = false;
     }
@@ -102,7 +52,7 @@ class Slider {
 
     if (liftStart) {
       if (mouseX > sliderX && mouseX < (sliderX + sliderWidth)) {
-        img = loadImage(liftImages.liftArray[int(sy)]);  
+        img = loadImage(liftImages.liftArray[int(sy)]);
       } else if (mouseX < sliderX) {
         img = loadImage(liftImages.liftLeftArray[int(sy)]);
         mistake = true;
@@ -110,8 +60,19 @@ class Slider {
         img = loadImage(liftImages.liftRightArray[int(sy)]);
         mistake = true;
       }
-      img.resize(width/3, 0);
+      img.resize(width, 0);
       image(img, width/2, height/2);
     }
+
+    rectMode(CORNER);
+    strokeWeight(10);
+    stroke(230, 0, 0);
+    fill(0, 230, 0);
+    rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
+
+    imageMode(CORNER);
+    arrow = loadImage("Images/upArrow.png");
+    arrow.resize(int(sliderWidth), int((sliderHeight/liftImages.liftArray.length)/2));
+    image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/liftImages.liftArray.length)/3*2);
   }
 }
