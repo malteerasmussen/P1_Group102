@@ -19,7 +19,6 @@ void setup() {
     new Scene6(), 
   };
 
-
 }
 
 void draw() {

@@ -1,7 +1,6 @@
 class Scene3 extends Scenes  {
   
 
-    Choice scene3Choice = new Choice();
 
   
   /*void display(){
@@ -9,8 +8,7 @@ class Scene3 extends Scenes  {
   }*/
   
   void display(){
+Choice();
 
-    scene3Choice.display();
-    scene3Choice.button();
   }
 }

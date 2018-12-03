@@ -38,6 +38,7 @@ class Scenes {
 
   boolean completed = false;
 
+  //Slider-Method
   void slider() {
     imageMode(CENTER);
 
@@ -53,9 +54,6 @@ class Scenes {
       liftStart = false;
       completed = false;
     }
-
-
-
 
     if (!liftStart) {
       imgLift = loadImage(SceneImage.liftReady);
@@ -98,5 +96,161 @@ class Scenes {
     arrow = loadImage("Images/upArrow.png");
     arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
     image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2);
+  }
+  void Review() {
+
+    Text reviewText = new Text();
+
+    float boxX = width/2;
+    float boxY = height/2;
+    float boxWidth = width-100;
+    float boxHeight = height/2;
+    int boxOpacity = 150;
+    PImage retry;
+    int retrySize = 70;
+    float retryX = boxX-boxWidth/5;
+    float retryY = boxY+boxHeight/2-retrySize;
+    PImage quit;
+    int quitSize = 70;
+    float quitX = boxX+boxWidth/5;
+    float quitY = boxY+boxHeight/2-quitSize;
+
+
+    textAlign(CENTER);
+    textSize(40);
+
+
+    if (!mistake) {
+      fill(0, 230, 0);
+      text("GOOD JOB!", width/2, height/7);
+    }
+    if (mistake) {
+      fill(230, 0, 0);
+      text("Room for improvement", width/2, height/7);
+    }
+
+    rectMode(CENTER);
+    fill(255, boxOpacity);
+    noStroke();
+    textSize(25);
+    rect(boxX, boxY, boxWidth, boxHeight);
+    fill(0);
+
+    if (!mistake) {
+      text(reviewText.goodReview, boxX, boxY, boxWidth, boxHeight-50);
+    }
+    if (mistake) {
+      text(reviewText.badReview, boxX, boxY, boxWidth, boxHeight-50);
+    }
+
+    // Retry Button
+    retry = loadImage("Images/retry.png");
+    imageMode(CENTER);
+    retry.resize(retrySize, retrySize);
+    image(retry, retryX, retryY);
+
+    if (mousePressed && dist(mouseX, mouseY, retryX, retryY) < retrySize/2) {
+      --currentSceneIndex;
+    }
+
+    // Quit button
+    quit = loadImage("Images/quit.png");
+    imageMode(CENTER);
+    quit.resize(quitSize, quitSize);
+    image(quit, quitX, quitY);
+
+    if (mousePressed && dist(mouseX, mouseY, quitX, quitY) < quitSize/2) {
+      currentSceneIndex = 1;
+    }
+  }
+  void Choice() {
+    String[] choicearray1 = new String[8];
+    { //Scene 2 text array
+      choicearray1[1] = "BACK";
+      choicearray1[2] = "CHEST";
+      choicearray1[3] = "ABS";
+      choicearray1[4] = "BICEPS";
+      choicearray1[5] = "TRICEPS";
+      choicearray1[6] = "SHOULDERS";
+      choicearray1[7] = "LEGS";
+    }
+    String[] choicearray2 = new String[8];
+    { //Scene 3 text array
+      choicearray2[1] = "FRONT \nSQUADS";
+      choicearray2[2] = "DEADLIFT";
+      choicearray2[3] = "SINGLE \nARM ROW";
+      choicearray2[4] = "KETTLEBELL \nSWINGS";
+      choicearray2[5] = "PULLOVER";
+      choicearray2[6] = "WIDE ROW";
+      choicearray2[7] = "GOOD \nMORNINGS";
+    }
+
+    int diff = 5; //Determent how many boxes are on each side
+    // PImage imgchoice = loadImage("image.jpg");
+    color colorchoice = #3DC9F2;
+    int txtc = 0;
+
+    float boxX = 100;
+    float boxY = 100;
+    float boxS = 45;
+    float txtS = 12;
+
+
+    //  background(imgchoice);
+    // image(imgchoice,0,0,400,600);
+    float X;
+    float Y;
+    int c = 7;
+    int trans = 100;
+    for ( int i = 1; i < 8; i ++) { //loop creating rectangles and text
+      if (i < diff) { 
+        X = 0;
+        Y = 0;
+      } else { //moving the rest of the rectangles to the other side of the screen
+        X = width - boxX*2;
+        Y = boxY*4;
+      }
+      fill(colorchoice, trans);
+      stroke(colorchoice, trans);
+      rectMode(CENTER);
+      rect(boxX+X, boxY*i-Y, boxS*2, boxS, c);
+
+      if (currentSceneIndex == 3) { //Makes the rectancles transparent in scene 4
+        fill(txtc, trans);
+      } else {
+        fill(txtc);
+      }
+      textSize(txtS);
+      textAlign(CENTER);
+      if (currentSceneIndex == 1) { //if statements, which determant which array to use
+        text(choicearray1[i], boxX+X, boxY*i-Y);
+      }
+      if (currentSceneIndex == 2 || currentSceneIndex == 3) {
+        text(choicearray2[i], boxX+X, boxY*i-Y-c/2);
+      }
+    }
+
+    float lowx = boxX-boxS;
+    float highx = boxX+boxS;
+    //println(lowx,highx);
+    float lowy = boxY-boxS/2;
+    float highy = boxY+boxS/2;
+
+    float newlowy = (boxY-boxS/2)*2;
+    float newhighy = (boxY+boxS/2)*2;
+
+    //println(lowy,highy);
+
+
+    //Scene 2 button
+    if (currentSceneIndex == 1 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy) {
+      currentSceneIndex ++;
+      println(1);
+    }
+    //scene 3 button
+    if (currentSceneIndex == 2 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > newlowy && mouseY < newhighy) {
+      currentSceneIndex ++;
+      println(2);
+    }
   }
 }

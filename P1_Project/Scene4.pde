@@ -1,9 +1,4 @@
-
-
 class Scene4 extends Scenes {
-
-  Choice scene4Choice = new Choice();
-
 
   int dist = 20;
   int e = 50;
@@ -60,8 +55,7 @@ class Scene4 extends Scenes {
 
   void display() {
 
-    scene4Choice.display(); 
-
+    Choice();
     //Headline
     fill(tc);
     textAlign(CENTER);
@@ -99,7 +93,7 @@ class Scene4 extends Scenes {
     imageMode(CORNER);
 
 
-    
+
     image(dl, dlx, dly, dls, boxs);
 
     image(yes, yesx, imgy, imgs, imgs);
