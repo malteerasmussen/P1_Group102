@@ -1,7 +1,7 @@
 class Scene5 extends Scenes {
 
 
-  Slider mySlider = new Slider();
+  //Slider mySlider = new Slider();
 
 
 
@@ -9,7 +9,8 @@ class Scene5 extends Scenes {
   void display() {
 
 
-    mySlider.displaySlider(); 
+    //mySlider.displaySlider(); 
+    slider();
     backButton();
   }
 }
