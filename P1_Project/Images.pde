@@ -2,25 +2,27 @@ class Images {
 
 
   String[] liftArray = {
-    "Images/man2.png", 
-    "Images/man3.png", 
-    "Images/man4.png", 
-    "Images/man5.png"
+    "Images/Lift/Lift-2.jpg", 
+    "Images/Lift/Lift-3.jpg", 
+    "Images/Lift/Lift-4.jpg", 
+    "Images/Lift/Lift-5.jpg"
   };
 
   String[] liftLeftArray = {
-    "Images/man2.png", 
-    "Images/man3l.png", 
-    "Images/man4l.png", 
-    "Images/man5l.png"
+    "Images/Lift/Lift-2.jpg", 
+    "Images/Lift/Lift-3l.jpg", 
+    "Images/Lift/Lift-4l.jpg", 
+    "Images/Lift/Lift-5l.jpg"
   };
 
   String[] liftRightArray = {
-    "Images/man2.png", 
-    "Images/man3r.png", 
-    "Images/man4r.png", 
-    "Images/man5r.png"
+    "Images/Lift/Lift-2.jpg", 
+    "Images/Lift/Lift-3r.jpg", 
+    "Images/Lift/Lift-4r.jpg", 
+    "Images/Lift/Lift-5r.jpg"
   };
 
-  String background = "Images/gym.jpg";
+  String liftReady = "Images/Lift/Lift-1.jpg";
+
+  String background = "Images/Lift/Lift-bg.jpg";
 }

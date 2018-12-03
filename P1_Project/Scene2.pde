@@ -1,13 +1,8 @@
-class Scene2 extends Scenes{
-  
-  Choice scene2Choice = new Choice();
-  
-  void display(){
+class Scene2 extends Scenes {
 
-    scene2Choice.display();
-    scene2Choice.button();
+
+  void display() {
+
+    Choice();
   }
-  
-  
-  
 }
