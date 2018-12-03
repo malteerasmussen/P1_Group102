@@ -24,5 +24,5 @@ class Images {
 
   String liftReady = "Images/Lift/Lift-1.jpg";
 
-    String background = "Images/Lift/Lift-bg.jpg";
+  String background = "Images/Lift/Lift-bg.jpg";
 }

@@ -11,9 +11,9 @@ class Scene1 extends Scenes {
     textSize(50);
     textAlign(CENTER);
     fill(0);
-    text("Touch to start",width/2,height/5);
-    
-    if(mousePressed){
+    text("Touch to start", width/2, height/5);
+
+    if (mousePressed) {
       ++currentSceneIndex;
     }
   }

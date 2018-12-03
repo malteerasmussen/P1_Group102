@@ -1,11 +1,8 @@
-class Scene2 extends Scenes{
-  
-  
-  void display(){
+class Scene2 extends Scenes {
 
-   Choice();
+
+  void display() {
+
+    Choice();
   }
-  
-  
-  
 }
