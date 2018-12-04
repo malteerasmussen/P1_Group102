@@ -188,11 +188,12 @@ class Scenes {
     int diff = 5; //Determent how many boxes are on each side
     // PImage imgchoice = loadImage("image.jpg");
     color colorchoice = #3DC9F2;
+    color transcolor = 150;
     int txtc = 0;
 
-    float boxX = 100;
-    float boxY = 100;
-    float boxS = 45;
+    float boxX = width/4;
+    float boxY = height/5;
+    float boxS = width/10;
     float txtS = 12;
 
 
@@ -201,7 +202,8 @@ class Scenes {
     float X;
     float Y;
     int c = 7;
-    int trans = 100;
+    int transn = 175;
+    int trans3 = 50;
     for ( int i = 1; i < 8; i ++) { //loop creating rectangles and text
       if (i < diff) { 
         X = 0;
@@ -210,13 +212,18 @@ class Scenes {
         X = width - boxX*2;
         Y = boxY*4;
       }
-      fill(colorchoice, trans);
-      stroke(colorchoice, trans);
+      if(currentSceneIndex == 1 && i == 1 || currentSceneIndex == 2 && i == 2) {
+      fill(colorchoice, transn);
+      }
+      else {
+        fill(transcolor, transn);
+      }
+      stroke(colorchoice, transn);
       rectMode(CENTER);
       rect(boxX+X, boxY*i-Y, boxS*2, boxS, c);
 
       if (currentSceneIndex == 3) { //Makes the rectancles transparent in scene 4
-        fill(txtc, trans);
+        fill(txtc, trans3);
       } else {
         fill(txtc);
       }
