@@ -13,11 +13,11 @@ class Scene4 extends Scenes {
   float boxl2y = boxly+boxs+dist;
 
   //Colors and transparent variables
-  color rc = #FC1F1F;
+  color rc = #C80000;
   color tc = 0;
-  color lc = #3DC9F2;
-  color l2c = #3DF25C;
-  int trans = 225;
+  color lc = 255;
+  color l2c = #D9FFD8;
+  int trans = 200;
 
   //Text koordinates
   float txtl = boxlx+dist;
@@ -34,7 +34,7 @@ class Scene4 extends Scenes {
   String awaretext = "1. Remember to lift with the legs\n    instead of the back\n2. If you are not experienced\n    minimize the weight on the bar";
 
   String infoheader = "You do the exercise correctly by:";
-  String infotext = "1. Stand with a mid-foot stance \n    under the barbell\n2. Bend over and grab the bar with a \n    shoulder-width grip\n3. Bendthe knees until the shins \n    touch the bar\n4. Lift the chest up and straighten \n    the lower back\n5. Take a big breath, hold it, and stand \n    up with the weight";
+  String infotext = "1. Stand with a mid-foot stance \n    under the barbell\n2. Bend over and grab the bar with a \n    shoulder-width grip\n3. Bend the knees until the shins \n    touch the bar\n4. Lift the chest up and straighten \n    the lower back\n5. Take a big breath, hold it, and stand \n    up with the weight";
 
   String accepttext = "Do you accept your choice?";
 
@@ -64,7 +64,7 @@ class Scene4 extends Scenes {
     text("DEADLIFT", boxrx, header);
 
     //Box with awareness info
-    fill(rc, trans);
+    fill(rc, trans+30);
     rectMode(CORNER);
     rect(boxrx+dist, boxry, boxs, boxs, e);
     fill(tc);

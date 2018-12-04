@@ -31,8 +31,8 @@ class Scenes {
   PImage arrow;
   float sliderX = width/9*7;
   float sliderY = height/10;
-  float sliderWidth = width/8;
-  float sliderHeight = height/8*5;
+  float sliderWidth = width/10;
+  float sliderHeight = height/10*5;
   float boxX = width/6;
   float boxY = height/9;
   float boxWidth = width/6*3;
@@ -97,10 +97,11 @@ class Scenes {
       image(imgLift, width/2, height/2);
     }
 
+//Slider rectangle
     rectMode(CORNER);
     strokeWeight(10);
-    stroke(230, 0, 0);
-    fill(0, 230, 0);
+    stroke(200, 0, 0);
+    fill(255,200);
     rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
 
     if (liftStart && mouseY < (sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2)) {
@@ -143,11 +144,11 @@ class Scenes {
 
 
     if (!mistake) {
-      fill(0, 230, 0);
+      fill(0,200,0);
       text("GOOD JOB!", width/2, height/7);
     }
     if (mistake) {
-      fill(230, 0, 0);
+      fill(200, 0, 0);
       text("Room for improvement", width/2, height/7);
     }
 
@@ -210,8 +211,8 @@ class Scenes {
 
     int diff = 5; //Determent how many boxes are on each side
     // PImage imgchoice = loadImage("image.jpg");
-    color colorchoice = #3DC9F2;
-    color transcolor = 150;
+    color colorchoice = #D9FFD8;
+    color transcolor = 255;
     int txtc = 0;
 
     float boxX = width/4;
@@ -226,7 +227,7 @@ class Scenes {
     float X;
     float Y;
     int c = 7;
-    int transn = 175;
+    int transn = 200;
     int trans3 = 50;
     for ( int i = 1; i < 8; i ++) { //loop creating rectangles and text
       if (i < diff) { 
