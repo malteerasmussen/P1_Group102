@@ -111,11 +111,11 @@ class Scenes {
     float boxHeight = height/2;
     int boxOpacity = 150;
     PImage retry;
-    int retrySize = 70;
+    int retrySize = height/10;
     float retryX = boxX-boxWidth/5;
     float retryY = boxY+boxHeight/2-retrySize;
     PImage quit;
-    int quitSize = 70;
+    int quitSize = height/10;
     float quitX = boxX+boxWidth/5;
     float quitY = boxY+boxHeight/2-quitSize;
 
