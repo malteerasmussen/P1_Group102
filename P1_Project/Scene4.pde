@@ -48,7 +48,7 @@ class Scene4 extends Scenes {
   PImage yes = loadImage("yes.png");
   float yesx = boxlx+im;
   float imgy = boxl2y+l*1.5;
-  float imgs = 50;
+  float imgs = width/15;
   PImage no = loadImage("no.png");
   float nox = boxlx+im*3;
 
