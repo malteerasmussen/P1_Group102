@@ -95,11 +95,16 @@ class Scenes {
     stroke(230, 0, 0);
     fill(0, 230, 0);
     rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
-
-    imageMode(CORNER);
+    
+    if(liftStart && mouseY < (sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2)){
+      image(arrow,sliderX,mouseY);
+    }
+    if(!liftStart){
+      imageMode(CORNER);
     arrow = loadImage("upArrow.png");
     arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
     image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2);
+    }
   }
   void Review() {
 
@@ -111,11 +116,11 @@ class Scenes {
     float boxHeight = height/2;
     int boxOpacity = 150;
     PImage retry;
-    int retrySize = 70;
+    int retrySize = height/10;
     float retryX = boxX-boxWidth/5;
     float retryY = boxY+boxHeight/2-retrySize;
     PImage quit;
-    int quitSize = 70;
+    int quitSize = height/10;
     float quitX = boxX+boxWidth/5;
     float quitY = boxY+boxHeight/2-quitSize;
 
