@@ -21,7 +21,7 @@ class Scenes {
     if (currentSceneIndex != 0 && currentSceneIndex != 5 && currentSceneIndex != 3) {
       PImage back;
       imageMode(CENTER);
-      back = loadImage("Images/back.png");
+      back = loadImage("back.png");
       back.resize(backSize, backSize);
       image(back, backX, backY);
     }
@@ -42,7 +42,7 @@ class Scenes {
   void slider() {
     imageMode(CENTER);
 
-    if (mousePressed && mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/SceneImage.liftArray.length)) {
+    if (touchIsStarted && mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/SceneImage.liftArray.length)) {
       liftStart = true;
       if (completed) {
         currentSceneIndex=5;
@@ -50,20 +50,21 @@ class Scenes {
     } else if (mouseY < sliderY || mouseY > sliderY + sliderHeight) {
       liftStart = false;
       completed = false;
-    } else if (!mousePressed) {
+    } else if (!touchIsStarted) {
       liftStart = false;
       completed = false;
     }
 
     if (!liftStart) {
       imgLift = loadImage(SceneImage.liftReady);
-      imgLift.resize(width, 0);
+      imgLift.resize(0, height);
       image(imgLift, width/2, height/2);
-      textSize(20);
+      textSize(height/40);
       fill(0);
       textAlign(CORNER);
-      text(liftText.SliderText, width/6, height/8);
+      text(liftText.SliderText, width/6, height/8,width/6*3,height/8*5);
       mistake = false;
+      noTint();
     }
 
     if (liftStart && mouseY < (sliderY+sliderHeight) - (SceneImage.liftArray.length-1)*(sliderHeight/SceneImage.liftArray.length) && mouseY > (sliderY)) {
@@ -75,14 +76,17 @@ class Scenes {
     if (liftStart) {
       if (mouseX > sliderX && mouseX < (sliderX + sliderWidth)) {
         imgLift = loadImage(SceneImage.liftArray[int(sy)]);
+        noTint();
       } else if (mouseX < sliderX) {
         imgLift = loadImage(SceneImage.liftLeftArray[int(sy)]);
         mistake = true;
+        tint(#FFE2DB);
       } else if (mouseX > sliderX+sliderWidth) {
         imgLift = loadImage(SceneImage.liftRightArray[int(sy)]);
         mistake = true;
+        tint(#FFE2DB);
       }
-      imgLift.resize(width, 0);
+      imgLift.resize(0, height);
       image(imgLift, width/2, height/2);
     }
 
@@ -93,7 +97,7 @@ class Scenes {
     rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
 
     imageMode(CORNER);
-    arrow = loadImage("Images/upArrow.png");
+    arrow = loadImage("upArrow.png");
     arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
     image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2);
   }
@@ -117,7 +121,7 @@ class Scenes {
 
 
     textAlign(CENTER);
-    textSize(40);
+    textSize(height/20);
 
 
     if (!mistake) {
@@ -132,7 +136,7 @@ class Scenes {
     rectMode(CENTER);
     fill(255, boxOpacity);
     noStroke();
-    textSize(25);
+    textSize(height/32);
     rect(boxX, boxY, boxWidth, boxHeight);
     fill(0);
 
@@ -144,25 +148,26 @@ class Scenes {
     }
 
     // Retry Button
-    retry = loadImage("Images/retry.png");
+    retry = loadImage("retry.png");
     imageMode(CENTER);
     retry.resize(retrySize, retrySize);
     image(retry, retryX, retryY);
 
-    if (mousePressed && dist(mouseX, mouseY, retryX, retryY) < retrySize/2) {
+    if (touchIsStarted && dist(mouseX, mouseY, retryX, retryY) < retrySize/2) {
       --currentSceneIndex;
     }
 
     // Quit button
-    quit = loadImage("Images/quit.png");
+    quit = loadImage("quit.png");
     imageMode(CENTER);
     quit.resize(quitSize, quitSize);
     image(quit, quitX, quitY);
 
-    if (mousePressed && dist(mouseX, mouseY, quitX, quitY) < quitSize/2) {
-      currentSceneIndex = 1;
+    if (touchIsStarted && dist(mouseX, mouseY, quitX, quitY) < quitSize/2) {
+      currentSceneIndex = 0 ;
     }
   }
+  
   void Choice() {
     String[] choicearray1 = new String[8];
     { //Scene 2 text array
@@ -190,10 +195,10 @@ class Scenes {
     color colorchoice = #3DC9F2;
     int txtc = 0;
 
-    float boxX = 100;
-    float boxY = 100;
-    float boxS = 45;
-    float txtS = 12;
+    float boxX = width/4;
+    float boxY = width/4;
+    float boxS = height/18;
+    float txtS = int(height/66);;
 
 
     //  background(imgchoice);
@@ -243,12 +248,12 @@ class Scenes {
 
 
     //Scene 2 button
-    if (currentSceneIndex == 1 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy) {
+    if (currentSceneIndex == 1 && touchIsStarted && mouseX > lowx && mouseX < highx && mouseY > lowy && mouseY < highy) {
       currentSceneIndex ++;
       println(1);
     }
     //scene 3 button
-    if (currentSceneIndex == 2 && mousePressed && mouseX > lowx && mouseX < highx && mouseY > newlowy && mouseY < newhighy) {
+    if (currentSceneIndex == 2 && touchIsStarted && mouseX > lowx && mouseX < highx && mouseY > newlowy && mouseY < newhighy) {
       currentSceneIndex ++;
       println(2);
     }

@@ -5,5 +5,5 @@ class Text {
 
   String goodReview = "You completed the exercise perfectly. Nicely done! Try again or pick another exercise.";
 
-  String SliderText = "Slide fra bunden for at starte";
+  String SliderText = "Slide from the bottom to the top and down again to complete the exercise. Make sure you keep a correct body posture by sliding inside the green area";
 }
