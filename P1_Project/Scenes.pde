@@ -204,7 +204,7 @@ class Scenes {
     float boxX = width/4;
     float boxY = height/5;
     float boxS = width/10;
-    float txtS = 12;
+    float txtS = 50;
 
 
 
@@ -229,7 +229,8 @@ class Scenes {
       else {
         fill(transcolor, transn);
       }
-      stroke(colorchoice, transn);
+      noStroke();
+      //stroke(colorchoice, transn);
       rectMode(CENTER);
       rect(boxX+X, boxY*i-Y, boxS*2, boxS, c);
 
