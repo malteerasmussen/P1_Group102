@@ -1,8 +1,8 @@
 class Scene4 extends Scenes {
 
-  int dist = 20;
+  int dist = 35;
   int e = 50;
-  int l = 40;
+  int l = height/18;
 
   //Variables for the boxes
   float boxrx = width/2;
@@ -27,8 +27,9 @@ class Scene4 extends Scenes {
   float accept = boxl2y+l;
 
   //Text size and strings
-  int txtsh = 14;
-  int txtst = 12;
+  int headersize = 120;
+  int txtsh = 44;
+  int txtst = 36;
   String awareheader = "You should be aware of following:";
   String awaretext = "1. Remember to lift with the legs\n    instead of the back\n2. If you are not experienced\n    minimize the weight on the bar";
 
@@ -40,15 +41,15 @@ class Scene4 extends Scenes {
   //Image and image koordinates
   PImage dl = loadImage("image-placeholder-title.jpg");
   float dlx = boxrx+dist;
-  float dly = boxly+boxs;
-  float dls = boxs+dist;
+  float dly = boxry+boxs+dist;
+  float dls = boxs;
 
   //Accept and decline variables and images
-  int im = 50;
+  int im = width/10;
   PImage yes = loadImage("yes.png");
   float yesx = boxlx+im;
   float imgy = boxl2y+l*1.5;
-  float imgs = width/15;
+  float imgs = width/12;
   PImage no = loadImage("no.png");
   float nox = boxlx+im*3;
 
@@ -59,7 +60,7 @@ class Scene4 extends Scenes {
     //Headline
     fill(tc);
     textAlign(CENTER);
-    textSize(50);
+    textSize(headersize);
     text("DEADLIFT", boxrx, header);
 
     //Box with awareness info
@@ -91,11 +92,7 @@ class Scene4 extends Scenes {
 
     //Image 
     imageMode(CORNER);
-
-
-
     image(dl, dlx, dly, dls, boxs);
-
     image(yes, yesx, imgy, imgs, imgs);
     image(no, nox, imgy, imgs, imgs);
 
