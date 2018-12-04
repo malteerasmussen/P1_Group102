@@ -9,7 +9,8 @@ float timerReset=0;
 float timer;
 
 void setup() {
-  size(600, 800);
+ // size(600, 800);
+ fullScreen();
   chooseScenes = new Scenes [] {
     new Scene1(), 
     new Scene2(), 
@@ -25,8 +26,9 @@ void draw() {
   myScenes.display();
   chooseScenes[currentSceneIndex].display();
 
-  timer=millis()/100;
+  timer=millis()/1000;
   timer();
+  println(timer-timerReset);
 }
 
 
@@ -38,12 +40,12 @@ void keyPressed() {
 }
 
 void timer() {
-  if ((timer-timerReset)%600 == 0) {
+  if ((timer-timerReset)%60 == 0) {
     currentSceneIndex = 0;
   }
 }
 
-void mouseClicked() {
+void touchEnded() {
   timerReset = timer - 1;
 
   if (currentSceneIndex == 4 && dist(mouseX, mouseY, 35, height-35) < 35) {
@@ -51,5 +53,6 @@ void mouseClicked() {
   }
   if (currentSceneIndex != 0 && currentSceneIndex != 3 && currentSceneIndex != 5 && dist(mouseX, mouseY, 35, height-35) < 35) {
     --currentSceneIndex;
+    timerReset = timer -0.5;
   }
 }

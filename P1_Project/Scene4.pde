@@ -110,12 +110,12 @@ class Scene4 extends Scenes {
     float lowy = imgy;
     float highy = imgy+boxs;
     //Accept button 
-    if ( mousePressed && mouseX > lowyx && mouseX < highyx && mouseY > lowy && mouseY < highy) {
+    if ( touchIsStarted && mouseX > lowyx && mouseX < highyx && mouseY > lowy && mouseY < highy) {
       currentSceneIndex ++;
       println("+");
     }
     //Decline button
-    if ( mousePressed && mouseX > lownx && mouseX < highnx && mouseY > lowy && mouseY < highy) {
+    if ( touchIsStarted && mouseX > lownx && mouseX < highnx && mouseY > lowy && mouseY < highy) {
       currentSceneIndex --;
       println("-");
     }
