@@ -48,10 +48,10 @@ void timer() {
 void touchEnded() {
   timerReset = timer - 1;
 
-  if (currentSceneIndex == 4 && dist(mouseX, mouseY, 35, height-35) < 35) {
+  if (currentSceneIndex == 4 && dist(mouseX, mouseY, height/10, height-height/20) < height/20) {
     currentSceneIndex=2;
   }
-  if (currentSceneIndex != 0 && currentSceneIndex != 3 && currentSceneIndex != 5 && dist(mouseX, mouseY, 35, height-35) < 35) {
+  if (currentSceneIndex != 0 && currentSceneIndex != 3 && currentSceneIndex != 5 && dist(mouseX, mouseY, height/10, height-height/20) < height/20) {
     --currentSceneIndex;
     timerReset = timer -0.5;
   }

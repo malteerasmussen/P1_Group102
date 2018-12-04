@@ -14,7 +14,7 @@ class Scenes {
   }
 
   void backButton() {
-    int backSize = 70;
+    int backSize = height/10;
     int backX = backSize/2;
     int backY = (height-(backSize/2));
 
@@ -33,6 +33,10 @@ class Scenes {
   float sliderY = height/10;
   float sliderWidth = width/8;
   float sliderHeight = height/8*5;
+  float boxX = width/6;
+  float boxY = height/9;
+  float boxWidth = width/6*3;
+  float boxHeight = height/9*2;
 
   boolean liftStart= false;
 
@@ -59,10 +63,13 @@ class Scenes {
       imgLift = loadImage(SceneImage.liftReady);
       imgLift.resize(0, height);
       image(imgLift, width/2, height/2);
+      noStroke();
+      fill(255,200);
+      rect(boxX, boxY, boxWidth, boxHeight,20);
       textSize(height/40);
       fill(0);
       textAlign(CORNER);
-      text(liftText.SliderText, width/6, height/8,width/6*3,height/8*5);
+      text(liftText.SliderText, boxX+20, boxY+20, boxWidth-20, boxHeight-20);
       mistake = false;
       noTint();
     }
@@ -95,15 +102,20 @@ class Scenes {
     stroke(230, 0, 0);
     fill(0, 230, 0);
     rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
-    
-    if(liftStart && mouseY < (sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2)){
-      image(arrow,sliderX,mouseY);
-    }
-    if(!liftStart){
+
+    if (liftStart && mouseY < (sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2)) {
       imageMode(CORNER);
-    arrow = loadImage("upArrow.png");
-    arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
-    image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2);
+      image(arrow, sliderX, mouseY);
+      if (mouseY < (sliderY+sliderHeight) - (SceneImage.liftArray.length-1)*(sliderHeight/SceneImage.liftArray.length)){
+        arrow = loadImage("downArrow.png");
+        arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
+      }
+    }
+    if (!liftStart) {
+      imageMode(CORNER);
+      arrow = loadImage("upArrow.png");
+      arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
+      image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2);
     }
   }
   void Review() {
@@ -114,7 +126,7 @@ class Scenes {
     float boxY = height/2;
     float boxWidth = width-100;
     float boxHeight = height/2;
-    int boxOpacity = 150;
+    int boxOpacity = 200;
     PImage retry;
     int retrySize = height/10;
     float retryX = boxX-boxWidth/5;
@@ -123,6 +135,7 @@ class Scenes {
     int quitSize = height/10;
     float quitX = boxX+boxWidth/5;
     float quitY = boxY+boxHeight/2-quitSize;
+    float border = 100;
 
 
     textAlign(CENTER);
@@ -142,14 +155,14 @@ class Scenes {
     fill(255, boxOpacity);
     noStroke();
     textSize(height/32);
-    rect(boxX, boxY, boxWidth, boxHeight);
+    rect(boxX, boxY, boxWidth, boxHeight,20);
     fill(0);
 
     if (!mistake) {
-      text(reviewText.goodReview, boxX, boxY, boxWidth, boxHeight-50);
+      text(reviewText.goodReview, boxX, boxY+border, boxWidth-border*2, boxHeight-border);
     }
     if (mistake) {
-      text(reviewText.badReview, boxX, boxY, boxWidth, boxHeight-50);
+      text(reviewText.badReview, boxX, boxY+border, boxWidth-border*2, boxHeight-border);
     }
 
     // Retry Button
@@ -172,7 +185,7 @@ class Scenes {
       currentSceneIndex = 0 ;
     }
   }
-  
+
   void Choice() {
     String[] choicearray1 = new String[8];
     { //Scene 2 text array
@@ -223,10 +236,9 @@ class Scenes {
         X = width - boxX*2;
         Y = boxY*4;
       }
-      if(currentSceneIndex == 1 && i == 1 || currentSceneIndex == 2 && i == 2) {
-      fill(colorchoice, transn);
-      }
-      else {
+      if (currentSceneIndex == 1 && i == 1 || currentSceneIndex == 2 && i == 2) {
+        fill(colorchoice, transn);
+      } else {
         fill(transcolor, transn);
       }
       stroke(colorchoice, transn);
