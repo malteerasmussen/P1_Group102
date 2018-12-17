@@ -1,5 +1,7 @@
 class Scene4 extends Scenes {
 
+  // Creating the layout of the info screen.
+  
   int dist = 35;
   int e = 50;
   int l = height/18;

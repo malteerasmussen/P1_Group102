@@ -1,4 +1,6 @@
 class Text {
+  
+  // strings used for displaying text in various scenes
 
   String badReview = "You seem to have some trouble with keeping the weights straight."
     +" It's important to keep a correct body posture in order to prevent injuries. It's adviced that you try the exercise again and make sure you focus on not tilting the weigths.";

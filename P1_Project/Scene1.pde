@@ -1,6 +1,6 @@
 class Scene1 extends Scenes {
 
-
+  // The layout of scene 1
 
   void display() {
     PImage img;
@@ -13,6 +13,7 @@ class Scene1 extends Scenes {
     fill(0);
     text("Touch to start", width/2, height/5);
 
+    // Next scene when screen is touched. Time buffer to keep the scene from reacting to back and quit buttons on other scenes.
     if (touchIsStarted && (timer-timerReset)>=1) {
       ++currentSceneIndex;
     }

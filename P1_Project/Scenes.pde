@@ -4,6 +4,8 @@ class Scenes {
   Text liftText = new Text();
 
   void display() {
+    // displaying background image on all subclasses / scenes.
+
     PImage bgImage;
     imageMode(CENTER);
     bgImage = loadImage(SceneImage.background);
@@ -12,7 +14,7 @@ class Scenes {
 
     backButton();
   }
-
+  // Displaying visuals for the back Button on certain scenes
   void backButton() {
     int backSize = height/10;
     int backX = backSize/2;
@@ -27,6 +29,7 @@ class Scenes {
     }
   }
 
+  // declaring variables for slider
   PImage imgLift;
   PImage arrow;
   float sliderX = width/9*7;
@@ -42,30 +45,29 @@ class Scenes {
 
   boolean completed = false;
 
-  //Slider-Method
+  //Slider visuals and behaviour
   void slider() {
     imageMode(CENTER);
 
+    // variable liftStart sets to true if bottom of slider is touched
     if (touchIsStarted && mouseX > sliderX && mouseX < (sliderX+sliderWidth) && mouseY < (sliderY+sliderHeight) && mouseY > (sliderY+sliderHeight) - (sliderHeight/SceneImage.liftArray.length)) {
       liftStart = true;
       if (completed) {
         currentSceneIndex=5;
       }
-    } else if (mouseY < sliderY || mouseY > sliderY + sliderHeight) {
-      liftStart = false;
-      completed = false;
-    } else if (!touchIsStarted) {
+      // reset slider if touched above or below slider. Or if not touched.
+    } else if (mouseY < sliderY || mouseY > sliderY + sliderHeight || !touchIsStarted) {
       liftStart = false;
       completed = false;
     }
-
+    // display text and image if not started
     if (!liftStart) {
       imgLift = loadImage(SceneImage.liftReady);
       imgLift.resize(0, height);
       image(imgLift, width/2, height/2);
       noStroke();
-      fill(255,200);
-      rect(boxX, boxY, boxWidth, boxHeight,20);
+      fill(255, 200);
+      rect(boxX, boxY, boxWidth, boxHeight, 20);
       textSize(height/40);
       fill(0);
       textAlign(CORNER);
@@ -74,18 +76,23 @@ class Scenes {
       noTint();
     }
 
+    // if slided to the top - variable 'completed' is set to true
     if (liftStart && mouseY < (sliderY+sliderHeight) - (SceneImage.liftArray.length-1)*(sliderHeight/SceneImage.liftArray.length) && mouseY > (sliderY)) {
       completed = true;
     }
 
+    // mapping y-coordinate of touch from bottom of slider to touch onto variable 'sy' from 0 to length of array.
     float sy = map(mouseY, sliderY+sliderHeight, sliderY, 0, SceneImage.liftArray.length-0.1);
 
+    // If liftStart is true display images from string arrays in Images class.
+    // Position in the arrays depend on y-coordinate of slider using variable 'sy'
     if (liftStart) {
       if (mouseX > sliderX && mouseX < (sliderX + sliderWidth)) {
         imgLift = loadImage(SceneImage.liftArray[int(sy)]);
         noTint();
       } else if (mouseX < sliderX) {
         imgLift = loadImage(SceneImage.liftLeftArray[int(sy)]);
+        //setting global boolean mistake to true
         mistake = true;
         tint(#FFE2DB);
       } else if (mouseX > sliderX+sliderWidth) {
@@ -97,17 +104,18 @@ class Scenes {
       image(imgLift, width/2, height/2);
     }
 
-//Slider rectangle
+    //Slider rectangle
     rectMode(CORNER);
     strokeWeight(10);
     stroke(200, 0, 0);
-    fill(255,200);
+    fill(255, 200);
     rect(sliderX, sliderY, sliderWidth, sliderHeight, 20);
 
+    // displaying arrow on slider pointing in direction to slide.
     if (liftStart && mouseY < (sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2)) {
       imageMode(CORNER);
       image(arrow, sliderX, mouseY);
-      if (mouseY < (sliderY+sliderHeight) - (SceneImage.liftArray.length-1)*(sliderHeight/SceneImage.liftArray.length)){
+      if (mouseY < (sliderY+sliderHeight) - (SceneImage.liftArray.length-1)*(sliderHeight/SceneImage.liftArray.length)) {
         arrow = loadImage("downArrow.png");
         arrow.resize(int(sliderWidth), int((sliderHeight/SceneImage.liftArray.length)/2));
       }
@@ -119,6 +127,7 @@ class Scenes {
       image(arrow, sliderX, sliderY+sliderHeight-(sliderHeight/SceneImage.liftArray.length)/3*2);
     }
   }
+  // review visuals and behaviour
   void Review() {
 
     Text reviewText = new Text();
@@ -142,9 +151,9 @@ class Scenes {
     textAlign(CENTER);
     textSize(height/20);
 
-
+    // Show different text depending on global boolean mistake
     if (!mistake) {
-      fill(0,200,0);
+      fill(0, 200, 0);
       text("GOOD JOB!", width/2, height/7);
     }
     if (mistake) {
@@ -156,9 +165,10 @@ class Scenes {
     fill(255, boxOpacity);
     noStroke();
     textSize(height/32);
-    rect(boxX, boxY, boxWidth, boxHeight,20);
+    rect(boxX, boxY, boxWidth, boxHeight, 20);
     fill(0);
 
+    // Show different text depending on global boolean mistake
     if (!mistake) {
       text(reviewText.goodReview, boxX, boxY+border, boxWidth-border*2, boxHeight-border);
     }
@@ -187,6 +197,7 @@ class Scenes {
     }
   }
 
+  // Choice scenes visuals and behaviour
   void Choice() {
     String[] choicearray1 = new String[8];
     { //Scene 2 text array
@@ -254,7 +265,7 @@ class Scenes {
       }
       textSize(txtS);
       textAlign(CENTER);
-      if (currentSceneIndex == 1) { //if statements, which determant which array to use
+      if (currentSceneIndex == 1) { //if-statements, which determant which array to use
         text(choicearray1[i], boxX+X, boxY*i-Y);
       }
       if (currentSceneIndex == 2 || currentSceneIndex == 3) {
@@ -264,14 +275,12 @@ class Scenes {
 
     float lowx = boxX-boxS;
     float highx = boxX+boxS;
-    //println(lowx,highx);
     float lowy = boxY-boxS/2;
     float highy = boxY+boxS/2;
 
     float newlowy = (boxY-boxS/2)*2;
     float newhighy = (boxY+boxS/2)*2;
 
-    //println(lowy,highy);
 
 
     //Scene 2 button
