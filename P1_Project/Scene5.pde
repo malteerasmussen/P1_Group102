@@ -1,15 +1,12 @@
 class Scene5 extends Scenes {
 
 
-  //Slider mySlider = new Slider();
-
-
 
 
   void display() {
 
-
-    //mySlider.displaySlider(); 
+    // Displaying the slider and back button
+    
     slider();
     backButton();
   }

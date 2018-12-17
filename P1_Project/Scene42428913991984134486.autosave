@@ -1,17 +1,16 @@
 class Scene4 extends Scenes {
 
-  // Creating the layout of the info screen.
-  
   int dist = 35;
   int e = 50;
   int l = height/18;
 
   //Variables for the boxes
   float boxrx = width/2;
+  float boxry = height/3;
   float boxlx = 0+dist;
-  float box1y = height/3;
+  float boxly = height/3;
   float boxs = boxrx-dist*2;
-  float boxl2y = height/2+height/4;
+  float boxl2y = boxly+boxs+dist;
 
   //Colors and transparent variables
   color rc = #C80000;
@@ -23,8 +22,8 @@ class Scene4 extends Scenes {
   //Text koordinates
   float txtl = boxlx+dist;
   float header = height/2-boxrx+l;
-  float aware = box1y+l;
-  float info = box1y+l;
+  float aware = boxry+l;
+  float info = boxly+l;
   float accept = boxl2y+l;
 
   //Text size and strings
@@ -39,15 +38,20 @@ class Scene4 extends Scenes {
 
   String accepttext = "Do you accept your choice?";
 
- 
+  //Image and image koordinates
+  PImage dl = loadImage("image-placeholder-title.jpg");
+  float dlx = boxrx+dist;
+  float dly = boxry+boxs+dist;
+  float dls = boxs;
+
   //Accept and decline variables and images
   int im = width/10;
   PImage yes = loadImage("yes.png");
-  float yesx = width/2-im;
+  float yesx = boxlx+im;
   float imgy = boxl2y+l*1.5;
   float imgs = width/12;
   PImage no = loadImage("no.png");
-  float nox = width/2+im;
+  float nox = boxlx+im*3;
 
 
   void display() {
@@ -62,7 +66,7 @@ class Scene4 extends Scenes {
     //Box with awareness info
     fill(rc, trans+30);
     rectMode(CORNER);
-    rect(boxrx+dist, box1y, boxs, boxs, e);
+    rect(boxrx+dist, boxry, boxs, boxs, e);
     fill(tc);
     textAlign(CORNER);
     textSize(txtsh);
@@ -72,7 +76,7 @@ class Scene4 extends Scenes {
 
     //Box with info about exercise
     fill(lc, trans);
-    rect(boxlx, box1y, boxs, boxs, e);
+    rect(boxlx, boxly, boxs, boxs, e);
     fill(tc);
     textSize(txtsh);
     text(infoheader, txtl, info); //Box headline
@@ -81,17 +85,15 @@ class Scene4 extends Scenes {
 
     //Box with accept and decline buttons
     fill(l2c, trans);
-    rect(width/2-boxs/2, boxl2y, boxs, boxs/2, e);
+    rect(boxlx, boxl2y, boxs, boxs/2, e);
     fill(tc);
     textSize(txtsh);
-    textAlign(CENTER);
-    text(accepttext, width/2, accept);
+    text(accepttext, txtl, accept);
 
     //Image 
     imageMode(CORNER);
     image(yes, yesx, imgy, imgs, imgs);
     image(no, nox, imgy, imgs, imgs);
-
     button();
   }
 
